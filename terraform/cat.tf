@@ -53,7 +53,7 @@ resource "null_resource" "catalogue" {
     # Bootstrap script called with private_ip of each node in the cluster
     inline = [
       "chmod +x /tmp/boot.sh",
-       "sudo sh /tmp/bootstrap.sh catalogue dev ${var.app_version}"
+       "sudo sh /tmp/boot.sh catalogue dev ${var.app_version}"
     ]
   }
 }
