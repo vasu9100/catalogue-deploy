@@ -52,6 +52,15 @@ pipeline {
                 """    
             }
         }
+
+        stage ('Destroy') {
+            steps {
+                sh """
+                    cd terraform
+                    terraform destroy -auto-approve
+                """    
+            }
+        }
     }
 
 
