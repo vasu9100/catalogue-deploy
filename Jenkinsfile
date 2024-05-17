@@ -14,6 +14,7 @@ pipeline {
     parameters {
         string(name: 'version', defaultValue: '', description: 'Version of the package') // Added commas and description
         string(name: 'environment', defaultValue: '', description: 'Target environment') // Added commas and description
+        booleanParam(name: 'Apply', defaultValue: false, description: 'Do you want apply')
     }
     stages {
 
@@ -45,6 +46,12 @@ pipeline {
         }
 
         stage ('apply') {
+
+            when {
+                expression{
+                    params.Apply == 'false'
+                }
+            }
             steps {
                 sh """
                     cd terraform
