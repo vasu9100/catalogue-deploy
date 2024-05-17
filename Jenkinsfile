@@ -34,6 +34,15 @@ pipeline {
                 """    
             }
         }
+
+        stage ('plan') {
+            steps {
+                sh """
+                    cd terraform
+                    terraform plan -var="app_version=${params.version}"
+                """    
+            }
+        }
     }
 
 
